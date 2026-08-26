@@ -1,0 +1,144 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  ADMIN
+  MODERADOR
+  USUARIO
+
+  @@map("user_role")
+}
+
+model User {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String   @db.VarChar(150)
+  email     String   @unique @db.VarChar(255)
+  password  String   @db.VarChar(255)
+  role      UserRole @default(USUARIO)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  ownedProjects  Project[]       @relation("ProjectOwner")
+  projectMembers ProjectMember[]
+  createdTasks   Task[]          @relation("TaskCreator")
+  taskComments   TaskComment[]
+  taskAssignees  TaskAssignee[]
+
+  @@map("users")
+}
+
+model Project {
+  id          String   @id @default(uuid()) @db.Uuid
+  ownerId     String   @map("owner_id") @db.Uuid
+  name        String   @db.VarChar(150)
+  description String?  @db.Text
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  owner User @relation("ProjectOwner", fields: [ownerId], references: [id], onDelete: Restrict)
+
+  members  ProjectMember[]
+  statuses TaskStatus[]
+  tasks    Task[]
+
+  @@index([ownerId])
+  @@map("projects")
+}
+
+model ProjectMember {
+  projectId String @map("project_id") @db.Uuid
+  userId    String @map("user_id") @db.Uuid
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([projectId, userId])
+  @@index([userId])
+  @@map("project_members")
+}
+
+model TaskStatus {
+  id        String @id @default(uuid()) @db.Uuid
+  projectId String @map("project_id") @db.Uuid
+  name      String @db.VarChar(80)
+  position  Int    @default(0)
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  tasks   Task[]
+
+  @@unique([projectId, id])
+  @@unique([projectId, name])
+  @@index([projectId])
+  @@map("task_statuses")
+}
+
+model Task {
+  id          String    @id @default(uuid()) @db.Uuid
+  projectId   String    @map("project_id") @db.Uuid
+  creatorId   String    @map("creator_id") @db.Uuid
+  statusId    String    @map("status_id") @db.Uuid
+  title       String    @db.VarChar(255)
+  description String?   @db.Text
+  position    Int       @default(0)
+  dueDate     DateTime? @map("due_date") @db.Date
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  creator User @relation("TaskCreator", fields: [creatorId], references: [id], onDelete: Restrict)
+
+  status TaskStatus @relation(fields: [projectId, statusId], references: [projectId, id], onDelete: Restrict)
+
+  checklistItems TaskChecklistItem[]
+  comments       TaskComment[]
+  assignees      TaskAssignee[]
+
+  @@index([projectId])
+  @@index([creatorId])
+  @@index([statusId])
+  @@map("tasks")
+}
+
+model TaskChecklistItem {
+  id          String  @id @default(uuid()) @db.Uuid
+  taskId      String  @map("task_id") @db.Uuid
+  title       String  @db.VarChar(255)
+  isCompleted Boolean @default(false) @map("is_completed")
+  position    Int     @default(0)
+
+  task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
+
+  @@index([taskId])
+  @@map("task_checklist_items")
+}
+
+model TaskComment {
+  id        String   @id @default(uuid()) @db.Uuid
+  taskId    String   @map("task_id") @db.Uuid
+  userId    String   @map("user_id") @db.Uuid
+  body      String   @db.Text
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  @@index([taskId])
+  @@index([userId])
+  @@map("task_comments")
+}
+
+model TaskAssignee {
+  taskId String @map("task_id") @db.Uuid
+  userId String @map("user_id") @db.Uuid
+
+  task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([taskId, userId])
+  @@index([userId])
+  @@map("task_assignees")
+}
