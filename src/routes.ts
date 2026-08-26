@@ -8,6 +8,7 @@ import { isAuthenticated } from "./middlewares/isAuthenticated.js";
 import { DetailUserController } from "./controllers/user/DetailUserController.js";
 import { CreateProjectController } from "./controllers/project/CreateProjectController.js";
 import { isAdminOrModerator } from "./middlewares/isAdminOrModerator.js";
+import { GetProjectsController } from "./controllers/project/GetProjectsController.js";
 
 const router = Router();
 
@@ -32,5 +33,7 @@ router.post(
   validateSchema(CreateProjectSchema),
   new CreateProjectController().handle,
 );
+
+router.get("/projects", isAuthenticated, new GetProjectsController().handle);
 
 export default router;

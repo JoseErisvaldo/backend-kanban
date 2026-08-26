@@ -8,3 +8,19 @@ export const CreateProjectSchema = z.object({
     })
     .strict(),
 });
+
+export const GetProjectsResponseSchema = z.array(
+  z
+    .object({
+      id: z.string(),
+      ownerId: z.string(),
+      name: z.string(),
+      description: z.string().nullable(),
+      createdAt: z.date(),
+      owner: z.object({
+        name: z.string(),
+        email: z.string().email(),
+      }),
+    })
+    .strict(),
+);
