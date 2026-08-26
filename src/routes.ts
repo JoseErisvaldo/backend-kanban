@@ -2,9 +2,12 @@ import { Router } from "express";
 import { CreateUserController } from "./controllers/user/CreateUserController.js";
 import { validateSchema } from "./middlewares/validateSchema.js";
 import { CreateUserSchema } from "./schema/userSchema.js";
+import { CreateProjectSchema } from "./schema/projects.js";
 import { AuthUserController } from "./controllers/user/AuthUserController.js";
 import { isAuthenticated } from "./middlewares/isAuthenticated.js";
 import { DetailUserController } from "./controllers/user/DetailUserController.js";
+import { CreateProjectController } from "./controllers/project/CreateProjectController.js";
+import { isAdminOrModerator } from "./middlewares/isAdminOrModerator.js";
 
 const router = Router();
 
@@ -21,5 +24,13 @@ router.post(
 );
 
 router.post("/session", new AuthUserController().handle);
+
+router.post(
+  "/projects",
+  isAuthenticated,
+  isAdminOrModerator,
+  validateSchema(CreateProjectSchema),
+  new CreateProjectController().handle,
+);
 
 export default router;
