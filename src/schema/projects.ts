@@ -21,6 +21,9 @@ export const GetProjectsResponseSchema = z.array(
         name: z.string(),
         email: z.string().email(),
       }),
+      total_task: z.object({
+        tasks: z.number(),
+      }),
     })
     .strict(),
 );

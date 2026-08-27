@@ -18,15 +18,31 @@ class GetProjectsService {
               email: true,
             },
           },
+          _count: {
+            select: {
+              tasks: true,
+            },
+          },
         },
+
         orderBy: {
           createdAt: "desc",
         },
       });
 
-      const response = GetProjectsResponseSchema.parse(projects);
+      const response = projects.map((project) => ({
+        id: project.id,
+        name: project.name,
+        description: project.description,
+        ownerId: project.ownerId,
+        createdAt: project.createdAt,
+        owner: project.owner,
+        total_task: {
+          tasks: project._count.tasks,
+        },
+      }));
 
-      return response;
+      return GetProjectsResponseSchema.parse(response);
     } catch (error) {
       //TODO: Handle ZodError globally in the application, instead of throwing a new error here.
       if (error instanceof ZodError) {
