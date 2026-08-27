@@ -27,3 +27,24 @@ export const GetProjectsResponseSchema = z.array(
     })
     .strict(),
 );
+
+export const GetProjectByIdParamsSchema = z.object({
+  query: z.object({
+    id: z.string().min(1, "ID do projeto é obrigatório!!!!"),
+  }),
+});
+
+export const GetProjectByIdResponseSchema = z.object({
+  id: z.string(),
+  ownerId: z.string(),
+  name: z.string(),
+  description: z.string().nullable(),
+  createdAt: z.date(),
+  owner: z.object({
+    name: z.string(),
+    email: z.string().email(),
+  }),
+  total_task: z.object({
+    tasks: z.number(),
+  }),
+});

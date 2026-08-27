@@ -2,13 +2,17 @@ import { Router } from "express";
 import { CreateUserController } from "./controllers/user/CreateUserController.js";
 import { validateSchema } from "./middlewares/validateSchema.js";
 import { CreateUserSchema } from "./schema/userSchema.js";
-import { CreateProjectSchema } from "./schema/projects.js";
+import {
+  CreateProjectSchema,
+  GetProjectByIdParamsSchema,
+} from "./schema/projects.js";
 import { AuthUserController } from "./controllers/user/AuthUserController.js";
 import { isAuthenticated } from "./middlewares/isAuthenticated.js";
 import { DetailUserController } from "./controllers/user/DetailUserController.js";
 import { CreateProjectController } from "./controllers/project/CreateProjectController.js";
 import { isAdminOrModerator } from "./middlewares/isAdminOrModerator.js";
 import { GetProjectsController } from "./controllers/project/GetProjectsController.js";
+import { GetByIdProjectController } from "./controllers/project/GetByIdProjectController.js";
 
 const router = Router();
 
@@ -35,5 +39,10 @@ router.post(
 );
 
 router.get("/projects", isAuthenticated, new GetProjectsController().handle);
-
+router.get(
+  "/project/details",
+  isAuthenticated,
+  validateSchema(GetProjectByIdParamsSchema),
+  new GetByIdProjectController().handle,
+);
 export default router;
