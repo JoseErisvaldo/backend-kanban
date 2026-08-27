@@ -48,3 +48,13 @@ export const GetProjectByIdResponseSchema = z.object({
     tasks: z.number(),
   }),
 });
+
+export const DeleteProjectParamsSchema = z.object({
+  query: z.object({
+    id: z.string().min(1, "ID do projeto é obrigatório!!!!"),
+  }),
+});
+
+export const DeleteProjectResponseSchema = z.object({
+  message: z.string(),
+});

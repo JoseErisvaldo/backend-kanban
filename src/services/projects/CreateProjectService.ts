@@ -1,3 +1,4 @@
+import { ZodError } from "zod";
 import prismaClient from "../../prisma";
 
 interface ICreateProject {
@@ -30,12 +31,19 @@ class CreateProjectService {
 
       return project;
     } catch (error) {
-      console.error("CreateProjectService error:", error);
       if (error instanceof Error) {
-        throw new Error(error.message);
-      }
+        throw error;
+      } else {
+        if (error instanceof ZodError) {
+          console.error("Erro de schema:", error.issues);
 
-      throw new Error("Erro ao criar o projeto");
+          throw new Error("Erro de validação dos projetos");
+        } else {
+          console.error("Erro ao criar projeto:", error);
+
+          throw new Error("Erro ao criar o projeto");
+        }
+      }
     }
   }
 }

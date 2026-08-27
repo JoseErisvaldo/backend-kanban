@@ -49,11 +49,11 @@ class GetProjectsService {
         console.error("Erro de schema:", error.issues);
 
         throw new Error("Erro de validação dos projetos");
+      } else {
+        console.error("Erro ao buscar projetos:", error);
+
+        throw new Error("Erro ao buscar os projetos");
       }
-
-      console.error("Erro ao obter projetos:", error);
-
-      throw new Error("Erro ao obter os projetos");
     }
   }
 }

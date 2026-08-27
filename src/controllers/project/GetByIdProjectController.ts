@@ -7,6 +7,7 @@ class GetByIdProjectController {
 
     const getByIdProjectService = new GetByIdProjectService();
     const project = await getByIdProjectService.execute(id);
+
     return res.json(project);
   }
 }
