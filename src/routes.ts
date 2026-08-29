@@ -6,6 +6,8 @@ import {
   CreateProjectSchema,
   GetProjectByIdParamsSchema,
   DeleteProjectParamsSchema,
+  PutProjectBodySchema,
+  PutProjectParamsSchema,
 } from "./schema/projects.js";
 import { AuthUserController } from "./controllers/user/AuthUserController.js";
 import { isAuthenticated } from "./middlewares/isAuthenticated.js";
@@ -15,6 +17,7 @@ import { isAdminOrModerator } from "./middlewares/isAdminOrModerator.js";
 import { GetProjectsController } from "./controllers/project/GetProjectsController.js";
 import { GetByIdProjectController } from "./controllers/project/GetByIdProjectController.js";
 import { DeleteProjectController } from "./controllers/project/DeleteProjectController.js";
+import { PutProjectController } from "./controllers/project/PutProjectController.js";
 
 const router = Router();
 
@@ -53,6 +56,14 @@ router.delete(
   isAdminOrModerator,
   validateSchema(DeleteProjectParamsSchema),
   new DeleteProjectController().handle,
+);
+router.put(
+  "/project",
+  isAuthenticated,
+  isAdminOrModerator,
+  validateSchema(PutProjectParamsSchema),
+  validateSchema(PutProjectBodySchema),
+  new PutProjectController().handle,
 );
 
 export default router;

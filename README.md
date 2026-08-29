@@ -64,8 +64,8 @@
 - ☑️ `POST /projects` — Criar projeto
 - ☑️ `GET /projects` — Listar meus projetos
 - ☑️ `GET /projects/:id` — Obter projeto
-- ☐ `PUT /projects/:id` — Atualizar projeto
-- ☐ `DELETE /projects/:id` — Deletar projeto
+- ☑️ `PUT /projects/:id` — Atualizar projeto
+- ☑️ `DELETE /projects/:id` — Deletar projeto
 
 ### 👥 Membros do Projeto
 

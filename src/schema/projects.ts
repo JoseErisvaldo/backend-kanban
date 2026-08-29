@@ -58,3 +58,25 @@ export const DeleteProjectParamsSchema = z.object({
 export const DeleteProjectResponseSchema = z.object({
   message: z.string(),
 });
+
+export const PutProjectParamsSchema = z.object({
+  query: z.object({
+    id: z.string().min(1, "ID do projeto é obrigatório!!!!"),
+  }),
+});
+
+export const PutProjectBodySchema = z.object({
+  body: z
+    .object({
+      name: z.string().min(1).optional(),
+      description: z.string().optional(),
+    })
+    .strict(),
+});
+
+export const PutProjectResponseSchema = z.object({
+  message: z.string(),
+  id: z.string(),
+  name: z.string(),
+  description: z.string().nullable(),
+});
