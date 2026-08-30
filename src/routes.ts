@@ -18,6 +18,9 @@ import { GetProjectsController } from "./controllers/project/GetProjectsControll
 import { GetByIdProjectController } from "./controllers/project/GetByIdProjectController.js";
 import { DeleteProjectController } from "./controllers/project/DeleteProjectController.js";
 import { PutProjectController } from "./controllers/project/PutProjectController.js";
+import { CreateProjectMembersController } from "./controllers/ProjectMembers/CreateProjectMembersController.js";
+import { CreateProjectMembersSchema } from "./schema/projectMembers.js";
+import { is } from "zod/v4/locales";
 
 const router = Router();
 
@@ -64,6 +67,14 @@ router.put(
   validateSchema(PutProjectParamsSchema),
   validateSchema(PutProjectBodySchema),
   new PutProjectController().handle,
+);
+
+router.post(
+  "/project/members",
+  isAuthenticated,
+  isAdminOrModerator,
+  validateSchema(CreateProjectMembersSchema),
+  new CreateProjectMembersController().handle,
 );
 
 export default router;
