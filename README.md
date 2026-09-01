@@ -69,8 +69,8 @@
 
 ### 👥 Membros do Projeto
 
-- ☐ `POST /projects/:id/members` — Adicionar membro ao projeto
-- ☐ `GET /projects/:id/members` — Listar membros do projeto
+- ☑️ `POST /projects/:id/members` — Adicionar membro ao projeto
+- ☑️ `GET /projects/:id/members` — Listar membros do projeto
 - ☐ `DELETE /projects/:id/members/:userId` — Remover membro do projeto
 
 ### 📋 Status / Colunas do Kanban

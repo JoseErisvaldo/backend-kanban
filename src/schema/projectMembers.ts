@@ -6,3 +6,17 @@ export const CreateProjectMembersSchema = z.object({
     user_id: z.string(),
   }),
 });
+
+export const GetProjectMembersParamsSchema = z.object({
+  params: z.object({
+    id: z.string().min(1),
+  }),
+});
+
+export const GetProjectMembersResponseSchema = z.array(
+  z.object({
+    projectId: z.string(),
+    userId: z.string(),
+    createdAt: z.string().min(1),
+  }),
+);
