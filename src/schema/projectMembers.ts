@@ -36,3 +36,13 @@ export const GetProjectMembersResponseSchema = z.array(
     }),
   }),
 );
+
+export const DeleteMemberInProjectResponseSchema = z.object({
+  message: z.string().min(1, "Id do membro do projeto é obrigatório!!!!"),
+});
+
+export const DDeleteMemberInProjectParamsSchema = z.object({
+  query: z.object({
+    id: z.string(),
+  }),
+});

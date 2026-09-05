@@ -22,9 +22,10 @@ import { CreateProjectMembersController } from "./controllers/ProjectMembers/Cre
 import { GetByProjectMembersController } from "./controllers/ProjectMembers/GetByProjectMembersController.js";
 import {
   CreateProjectMembersSchema,
+  DDeleteMemberInProjectParamsSchema,
   GetProjectMembersParamsSchema,
 } from "./schema/projectMembers.js";
-import { is } from "zod/v4/locales";
+import { DeleteProjectMembersController } from "./controllers/ProjectMembers/DeleteProjectMembersController.js";
 
 const router = Router();
 
@@ -85,6 +86,13 @@ router.get(
   isAuthenticated,
   validateSchema(GetProjectMembersParamsSchema),
   new GetByProjectMembersController().handle,
+);
+router.delete(
+  "/projects/members",
+  isAuthenticated,
+  isAdminOrModerator,
+  validateSchema(DDeleteMemberInProjectParamsSchema),
+  new DeleteProjectMembersController().handle,
 );
 
 export default router;
