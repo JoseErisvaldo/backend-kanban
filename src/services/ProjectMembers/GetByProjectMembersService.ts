@@ -10,6 +10,24 @@ class GetByProjectMembersService {
       where: {
         projectId,
       },
+      select: {
+        projectId: true,
+        userId: true,
+        createdAt: true,
+        project: {
+          select: {
+            name: true,
+            description: true,
+            createdAt: true,
+          },
+        },
+        user: {
+          select: {
+            name: true,
+            email: true,
+          },
+        },
+      },
     });
 
     if (existProject.length === 0) {
