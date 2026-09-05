@@ -11,6 +11,7 @@ class GetByProjectMembersService {
         projectId,
       },
       select: {
+        id: true,
         projectId: true,
         userId: true,
         createdAt: true,

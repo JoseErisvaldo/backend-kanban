@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { string, z } from "zod";
 
 export const CreateProjectMembersSchema = z.object({
   body: z.object({
@@ -15,6 +15,7 @@ export const GetProjectMembersParamsSchema = z.object({
 
 export const GetProjectMembersResponseSchema = z.array(
   z.object({
+    id: z.string(),
     projectId: z.string(),
     userId: z.string(),
     createdAt: z.preprocess((arg) => {
