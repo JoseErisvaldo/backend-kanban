@@ -75,8 +75,8 @@
 
 ### 📋 Status / Colunas do Kanban
 
-- ☐ `POST /projects/:projectId/statuses` — Criar status/coluna
-- ☐ `GET /projects/:projectId/statuses` — Listar status/colunas
+- ☑️ `POST /projects/:projectId/statuses` — Criar status/coluna
+- ☑️ `GET /projects/:projectId/statuses` — Listar status/colunas
 - ☐ `PUT /projects/:projectId/statuses/:id` — Atualizar status/coluna
 - ☐ `DELETE /projects/:projectId/statuses/:id` — Deletar status/coluna
 - ☐ `PATCH /projects/:projectId/statuses/reorder` — Reordenar colunas

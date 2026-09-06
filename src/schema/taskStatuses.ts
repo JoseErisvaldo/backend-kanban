@@ -9,13 +9,21 @@ export const CreateTaskStatusesSchema = z.object({
   }),
 });
 
-export const TaskStatusResponseSchema = z.object({
-  id: z.string(),
-  projectId: z.string(),
-  name: z.string(),
-  position: z.number(),
-  createdAt: z.preprocess((arg) => {
-    if (typeof arg === "string") return new Date(arg);
-    return arg;
-  }, z.date()),
+export const GetTaskStatusResponseSchema = z.array(
+  z.object({
+    id: z.string(),
+    projectId: z.string(),
+    name: z.string(),
+    position: z.number(),
+    createdAt: z.preprocess((arg) => {
+      if (typeof arg === "string") return new Date(arg);
+      return arg;
+    }, z.date()),
+  }),
+);
+
+export const GetTaskStatusesParamsSchema = z.object({
+  params: z.object({
+    projectId: z.string().uuid("ID do projeto deve ser um UUID válido"),
+  }),
 });

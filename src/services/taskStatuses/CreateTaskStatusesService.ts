@@ -1,5 +1,4 @@
 import prismaClient from "../../prisma";
-import { TaskStatusResponseSchema } from "../../schema/taskStatuses";
 
 class CreateTaskStatusesService {
   async execute({ project_id, name }: { project_id: string; name: string }) {
@@ -45,7 +44,7 @@ class CreateTaskStatusesService {
       data: newTaskStatus,
     });
 
-    return TaskStatusResponseSchema.parse(createTaskStatus);
+    return createTaskStatus;
   }
 }
 

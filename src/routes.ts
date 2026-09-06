@@ -27,7 +27,11 @@ import {
 } from "./schema/projectMembers.js";
 import { DeleteProjectMembersController } from "./controllers/ProjectMembers/DeleteProjectMembersController.js";
 import { CreateTaskStatusesController } from "./controllers/taskStatuses/CreateTaskStatusesController.js";
-import { CreateTaskStatusesSchema } from "./schema/taskStatuses.js";
+import {
+  CreateTaskStatusesSchema,
+  GetTaskStatusesParamsSchema,
+} from "./schema/taskStatuses.js";
+import { GetTaskStatusesController } from "./controllers/taskStatuses/GetTaskStatusesController.js";
 
 const router = Router();
 
@@ -104,5 +108,10 @@ router.post(
   validateSchema(CreateTaskStatusesSchema),
   new CreateTaskStatusesController().handle,
 );
-
+router.get(
+  "/projects/:projectId/statuses",
+  isAuthenticated,
+  validateSchema(GetTaskStatusesParamsSchema),
+  new GetTaskStatusesController().handle,
+);
 export default router;
