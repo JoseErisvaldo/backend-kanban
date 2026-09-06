@@ -26,6 +26,8 @@ import {
   GetProjectMembersParamsSchema,
 } from "./schema/projectMembers.js";
 import { DeleteProjectMembersController } from "./controllers/ProjectMembers/DeleteProjectMembersController.js";
+import { CreateTaskStatusesController } from "./controllers/taskStatuses/CreateTaskStatusesController.js";
+import { CreateTaskStatusesSchema } from "./schema/taskStatuses.js";
 
 const router = Router();
 
@@ -93,6 +95,14 @@ router.delete(
   isAdminOrModerator,
   validateSchema(DDeleteMemberInProjectParamsSchema),
   new DeleteProjectMembersController().handle,
+);
+
+router.post(
+  "/projects/:projectId/statuses",
+  isAuthenticated,
+  isAdminOrModerator,
+  validateSchema(CreateTaskStatusesSchema),
+  new CreateTaskStatusesController().handle,
 );
 
 export default router;
