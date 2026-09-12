@@ -31,6 +31,8 @@ import {
   CreateTaskStatusesSchema,
   GetTaskStatusesParamsSchema,
 } from "./schema/taskStatuses.js";
+import { UpdateTaskStatusesSchema } from "./schema/taskStatuses.js";
+import { UpdateTaskStatusesController } from "./controllers/taskStatuses/UpdateTaskStatusesController.js";
 import { GetTaskStatusesController } from "./controllers/taskStatuses/GetTaskStatusesController.js";
 
 const router = Router();
@@ -113,5 +115,12 @@ router.get(
   isAuthenticated,
   validateSchema(GetTaskStatusesParamsSchema),
   new GetTaskStatusesController().handle,
+);
+router.put(
+  "/projects/:projectId/statuses/:id",
+  isAuthenticated,
+  isAdminOrModerator,
+  validateSchema(UpdateTaskStatusesSchema),
+  new UpdateTaskStatusesController().handle,
 );
 export default router;
