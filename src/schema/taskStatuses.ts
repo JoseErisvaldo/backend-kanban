@@ -59,3 +59,14 @@ export const DeleteTaskStatusesSchema = z.object({
 export const DeleteTaskStatusesResponseSchema = z.object({
   message: z.string(),
 });
+
+export const ReorderTaskStatusesSchema = z.object({
+  params: z.object({
+    projectId: z.string().uuid("ID do projeto deve ser um UUID válido"),
+  }),
+  body: z.object({
+    order: z
+      .array(z.string().uuid("ID do status deve ser um UUID válido"))
+      .min(1),
+  }),
+});

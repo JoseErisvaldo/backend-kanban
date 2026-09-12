@@ -79,7 +79,7 @@
 - ☑️ `GET /projects/:projectId/statuses` — Listar status/colunas
 - ☑️ `PUT /projects/:projectId/statuses/:id` — Atualizar status/coluna
 - ☑️ `DELETE /projects/:projectId/statuses/:id` — Deletar status/coluna
-- ☐ `PATCH /projects/:projectId/statuses/reorder` — Reordenar colunas
+- ☑️ `PATCH /projects/:projectId/statuses/reorder` — Reordenar colunas
 
 ### 📝 Tasks / Cards
 
