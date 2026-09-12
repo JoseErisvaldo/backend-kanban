@@ -33,6 +33,8 @@ import {
 } from "./schema/taskStatuses.js";
 import { UpdateTaskStatusesSchema } from "./schema/taskStatuses.js";
 import { UpdateTaskStatusesController } from "./controllers/taskStatuses/UpdateTaskStatusesController.js";
+import { DeleteTaskStatusesSchema } from "./schema/taskStatuses.js";
+import { DeleteTaskStatusesController } from "./controllers/taskStatuses/DeleteTaskStatusesController.js";
 import { GetTaskStatusesController } from "./controllers/taskStatuses/GetTaskStatusesController.js";
 
 const router = Router();
@@ -122,5 +124,12 @@ router.put(
   isAdminOrModerator,
   validateSchema(UpdateTaskStatusesSchema),
   new UpdateTaskStatusesController().handle,
+);
+router.delete(
+  "/projects/:projectId/statuses/:id",
+  isAuthenticated,
+  isAdminOrModerator,
+  validateSchema(DeleteTaskStatusesSchema),
+  new DeleteTaskStatusesController().handle,
 );
 export default router;

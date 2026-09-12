@@ -48,3 +48,14 @@ export const UpdateTaskStatusesResponseSchema = z.object({
     return arg;
   }, z.date()),
 });
+
+export const DeleteTaskStatusesSchema = z.object({
+  params: z.object({
+    projectId: z.string().uuid("ID do projeto deve ser um UUID válido"),
+    id: z.string().uuid("ID do status deve ser um UUID válido"),
+  }),
+});
+
+export const DeleteTaskStatusesResponseSchema = z.object({
+  message: z.string(),
+});

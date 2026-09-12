@@ -61,11 +61,13 @@ class UpdateTaskStatusesService {
       if (error instanceof ZodError) {
         console.error("Erro de schema:", error.issues);
 
-        throw new Error("Erro de validação dos status de tarefa");
+        return Promise.reject(
+          new Error("Erro de validação dos status de tarefa"),
+        );
       } else {
         console.error("Erro ao atualizar dados da tarefa:", error);
 
-        throw new Error("Erro ao atualizar dados da tarefa");
+        return Promise.reject(new Error("Erro ao atualizar dados da tarefa"));
       }
     }
   }
