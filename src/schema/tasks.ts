@@ -173,3 +173,7 @@ export const UpdateTaskParamsSchema = z.object({
   }),
   body: UpdateTaskBodySchema,
 });
+
+export const DeleteTaskResponseSchema = z.object({
+  message: z.string(),
+});
