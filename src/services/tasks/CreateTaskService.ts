@@ -1,6 +1,6 @@
 import { ZodError } from "zod";
 import prismaClient from "../../prisma";
-import { CreateTaskResponseSchema } from "../../schema/tasks";
+import { CreateTaskResponseSchema, TaskType } from "../../schema/tasks";
 export interface CreateTaskParams {
   project_id: string;
   creator_id: string;
@@ -8,15 +8,7 @@ export interface CreateTaskParams {
   description?: string;
   status_id?: string;
   dueDate?: string;
-  type:
-    | "BUG"
-    | "FEATURE"
-    | "IMPROVEMENT"
-    | "CHORE"
-    | "RESEARCH"
-    | "HOTFIX"
-    | "DESIGN"
-    | "TEST";
+  type: TaskType;
 }
 
 class CreateTaskService {

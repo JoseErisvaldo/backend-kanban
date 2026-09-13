@@ -41,8 +41,9 @@ import { CreateTaskSchema } from "./schema/tasks.js";
 import { CreateTaskController } from "./controllers/tasks/CreateTaskController.js";
 import { GetTasksParamsSchema } from "./schema/tasks.js";
 import { GetTasksController } from "./controllers/tasks/GetTasksController.js";
-import { GetTaskParamsSchema } from "./schema/tasks.js";
+import { GetTaskParamsSchema, UpdateTaskParamsSchema } from "./schema/tasks.js";
 import { GetTaskByIdController } from "./controllers/tasks/GetTaskByIdController.js";
+import { UpdateTaskController } from "./controllers/tasks/UpdateTaskController.js";
 import { GetTaskStatusesController } from "./controllers/taskStatuses/GetTaskStatusesController.js";
 
 const router = Router();
@@ -165,5 +166,11 @@ router.get(
   isAuthenticated,
   validateSchema(GetTaskParamsSchema),
   new GetTaskByIdController().handle,
+);
+router.put(
+  "/projects/:projectId/tasks/:id",
+  isAuthenticated,
+  validateSchema(UpdateTaskParamsSchema),
+  new UpdateTaskController().handle,
 );
 export default router;

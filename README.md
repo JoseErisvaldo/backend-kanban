@@ -86,7 +86,7 @@
 - ☑️ `POST /projects/:projectId/tasks` — Criar card
 - ☑️ `GET /projects/:projectId/tasks` — Listar cards do projeto
 - ☑️ `GET /projects/:projectId/tasks/:id` — Obter card
-- ☐ `PUT /projects/:projectId/tasks/:id` — Atualizar card
+- ☑️`PUT /projects/:projectId/tasks/:id` — Atualizar card
 - ☐ `DELETE /projects/:projectId/tasks/:id` — Deletar card
 - ☐ `PATCH /projects/:projectId/tasks/:id/status` — Alterar status do card
 - ☐ `PATCH /projects/:projectId/tasks/reorder` — Reordenar cards
