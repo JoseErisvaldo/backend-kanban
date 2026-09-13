@@ -41,9 +41,14 @@ import { CreateTaskSchema } from "./schema/tasks.js";
 import { CreateTaskController } from "./controllers/tasks/CreateTaskController.js";
 import { GetTasksParamsSchema } from "./schema/tasks.js";
 import { GetTasksController } from "./controllers/tasks/GetTasksController.js";
-import { GetTaskParamsSchema, UpdateTaskParamsSchema } from "./schema/tasks.js";
+import {
+  GetTaskParamsSchema,
+  UpdateTaskParamsSchema,
+  UpdateTaskStatusSchema,
+} from "./schema/tasks.js";
 import { GetTaskByIdController } from "./controllers/tasks/GetTaskByIdController.js";
 import { UpdateTaskController } from "./controllers/tasks/UpdateTaskController.js";
+import { UpdateTaskStatusController } from "./controllers/tasks/UpdateTaskStatusController.js";
 import { DeleteTaskController } from "./controllers/tasks/DeleteTaskController.js";
 import { GetTaskStatusesController } from "./controllers/taskStatuses/GetTaskStatusesController.js";
 
@@ -179,5 +184,11 @@ router.delete(
   isAuthenticated,
   validateSchema(GetTaskParamsSchema),
   new DeleteTaskController().handle,
+);
+router.patch(
+  "/projects/:projectId/tasks/:id/status",
+  isAuthenticated,
+  validateSchema(UpdateTaskStatusSchema),
+  new UpdateTaskStatusController().handle,
 );
 export default router;
