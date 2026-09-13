@@ -39,6 +39,8 @@ import { ReorderTaskStatusesSchema } from "./schema/taskStatuses.js";
 import { ReorderTaskStatusesController } from "./controllers/taskStatuses/ReorderTaskStatusesController.js";
 import { CreateTaskSchema } from "./schema/tasks.js";
 import { CreateTaskController } from "./controllers/tasks/CreateTaskController.js";
+import { GetTasksParamsSchema } from "./schema/tasks.js";
+import { GetTasksController } from "./controllers/tasks/GetTasksController.js";
 import { GetTaskStatusesController } from "./controllers/taskStatuses/GetTaskStatusesController.js";
 
 const router = Router();
@@ -149,5 +151,11 @@ router.post(
   isAuthenticated,
   validateSchema(CreateTaskSchema),
   new CreateTaskController().handle,
+);
+router.get(
+  "/projects/:projectId/tasks",
+  isAuthenticated,
+  validateSchema(GetTasksParamsSchema),
+  new GetTasksController().handle,
 );
 export default router;
