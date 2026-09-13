@@ -83,7 +83,7 @@
 
 ### 📝 Tasks / Cards
 
-- ☐ `POST /projects/:projectId/tasks` — Criar card
+- ☑️ `POST /projects/:projectId/tasks` — Criar card
 - ☐ `GET /projects/:projectId/tasks` — Listar cards do projeto
 - ☐ `GET /projects/:projectId/tasks/:id` — Obter card
 - ☐ `PUT /projects/:projectId/tasks/:id` — Atualizar card

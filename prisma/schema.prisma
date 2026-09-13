@@ -15,6 +15,19 @@ enum UserRole {
   @@map("user_role")
 }
 
+enum TaskType {
+  BUG
+  FEATURE
+  IMPROVEMENT
+  CHORE
+  RESEARCH
+  HOTFIX
+  DESIGN
+  TEST
+
+  @@map("task_type")
+}
+
 model User {
   id        String   @id @default(uuid()) @db.Uuid
   name      String   @db.VarChar(150)
@@ -84,6 +97,7 @@ model Task {
   projectId   String    @map("project_id") @db.Uuid
   creatorId   String    @map("creator_id") @db.Uuid
   statusId    String    @map("status_id") @db.Uuid
+  type        TaskType  @default(FEATURE)
   title       String    @db.VarChar(255)
   description String?   @db.Text
   position    Int       @default(0)

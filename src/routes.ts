@@ -37,6 +37,8 @@ import { DeleteTaskStatusesSchema } from "./schema/taskStatuses.js";
 import { DeleteTaskStatusesController } from "./controllers/taskStatuses/DeleteTaskStatusesController.js";
 import { ReorderTaskStatusesSchema } from "./schema/taskStatuses.js";
 import { ReorderTaskStatusesController } from "./controllers/taskStatuses/ReorderTaskStatusesController.js";
+import { CreateTaskSchema } from "./schema/tasks.js";
+import { CreateTaskController } from "./controllers/tasks/CreateTaskController.js";
 import { GetTaskStatusesController } from "./controllers/taskStatuses/GetTaskStatusesController.js";
 
 const router = Router();
@@ -140,5 +142,12 @@ router.patch(
   isAdminOrModerator,
   validateSchema(ReorderTaskStatusesSchema),
   new ReorderTaskStatusesController().handle,
+);
+
+router.post(
+  "/projects/:projectId/tasks",
+  isAuthenticated,
+  validateSchema(CreateTaskSchema),
+  new CreateTaskController().handle,
 );
 export default router;
