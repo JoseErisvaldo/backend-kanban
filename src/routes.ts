@@ -37,7 +37,10 @@ import { DeleteTaskStatusesSchema } from "./schema/taskStatuses.js";
 import { DeleteTaskStatusesController } from "./controllers/taskStatuses/DeleteTaskStatusesController.js";
 import { ReorderTaskStatusesSchema } from "./schema/taskStatuses.js";
 import { ReorderTaskStatusesController } from "./controllers/taskStatuses/ReorderTaskStatusesController.js";
-import { CreateTaskSchema } from "./schema/tasks.js";
+import {
+  CreateChecklistItemParamsSchema,
+  CreateTaskSchema,
+} from "./schema/tasks.js";
 import { CreateTaskController } from "./controllers/tasks/CreateTaskController.js";
 import { GetTasksParamsSchema } from "./schema/tasks.js";
 import { GetTasksController } from "./controllers/tasks/GetTasksController.js";
@@ -51,6 +54,7 @@ import { UpdateTaskController } from "./controllers/tasks/UpdateTaskController.j
 import { UpdateTaskStatusController } from "./controllers/tasks/UpdateTaskStatusController.js";
 import { DeleteTaskController } from "./controllers/tasks/DeleteTaskController.js";
 import { GetTaskStatusesController } from "./controllers/taskStatuses/GetTaskStatusesController.js";
+import { CreateChecklistItemController } from "./controllers/checklist/CreateChecklistItemController.js";
 
 const router = Router();
 
@@ -190,5 +194,11 @@ router.patch(
   isAuthenticated,
   validateSchema(UpdateTaskStatusSchema),
   new UpdateTaskStatusController().handle,
+);
+router.post(
+  "/tasks/:taskId/checklist",
+  isAuthenticated,
+  validateSchema(CreateChecklistItemParamsSchema),
+  new CreateChecklistItemController().handle,
 );
 export default router;
