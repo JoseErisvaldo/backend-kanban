@@ -76,7 +76,7 @@ import { DeleteTaskAssigneeController } from "./controllers/assignees/DeleteTask
 
 const router = Router();
 
-router.get("/health", (req, res) => {
+router.get("/health", (_, res) => {
   res.send("OK");
 });
 

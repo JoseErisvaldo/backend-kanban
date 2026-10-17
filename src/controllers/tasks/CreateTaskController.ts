@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { CreateTaskService } from "../../services/tasks/CreateTaskService";
+import type { TaskType } from "../../schema/tasks";
 
 class CreateTaskController {
   async handle(req: Request, res: Response) {
@@ -9,7 +10,7 @@ class CreateTaskController {
       description?: string;
       statusId?: string;
       dueDate?: string;
-      type: string;
+      type: TaskType;
     };
 
     const creatorId = req.user_id;

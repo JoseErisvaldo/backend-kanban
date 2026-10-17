@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(router);
 
-app.use((error: Error, _: Request, res: Response, next: NextFunction) => {
+app.use((error: Error, _: Request, res: Response, _next: NextFunction) => {
   if (error instanceof Error) {
     return res.status(400).json({
       error: error.message,
