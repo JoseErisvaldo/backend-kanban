@@ -27,6 +27,7 @@ class CreateTaskAssigneeService {
         data: { taskId, userId },
         select: {
           taskId: true,
+          createdAt: true,
           user: { select: { id: true, name: true } },
         },
       });

@@ -149,8 +149,9 @@ model TaskComment {
 }
 
 model TaskAssignee {
-  taskId String @map("task_id") @db.Uuid
-  userId String @map("user_id") @db.Uuid
+  taskId    String   @map("task_id") @db.Uuid
+  userId    String   @map("user_id") @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
 
   task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)

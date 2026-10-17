@@ -44,6 +44,7 @@ import {
   CreateTaskSchema,
   DeleteChecklistItemParamsSchema,
   DeleteTaskCommentParamsSchema,
+  GetTaskAssigneesParamsSchema,
   GetTaskCommentsParamsSchema,
   UpdateChecklistItemCompletionSchema,
   UpdateChecklistItemParamsSchema,
@@ -69,6 +70,7 @@ import { CreateTaskCommentController } from "./controllers/comments/CreateTaskCo
 import { GetTaskCommentsController } from "./controllers/comments/GetTaskCommentsController.js";
 import { DeleteTaskCommentController } from "./controllers/comments/DeleteTaskCommentController.js";
 import { CreateTaskAssigneeController } from "./controllers/assignees/CreateTaskAssigneeController.js";
+import { GetTaskAssigneesController } from "./controllers/assignees/GetTaskAssigneesController.js";
 
 const router = Router();
 
@@ -256,5 +258,11 @@ router.post(
   isAuthenticated,
   validateSchema(CreateTaskAssigneeSchema),
   new CreateTaskAssigneeController().handle,
+);
+router.get(
+  "/tasks/:taskId/assignees",
+  isAuthenticated,
+  validateSchema(GetTaskAssigneesParamsSchema),
+  new GetTaskAssigneesController().handle,
 );
 export default router;

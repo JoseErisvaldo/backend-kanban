@@ -162,7 +162,27 @@ export const CreateTaskAssigneeSchema = z.object({
 export const CreateTaskAssigneeResponseSchema = z.object({
   taskId: z.string(),
   user: TaskAssigneeUserSchema,
+  createdAt: z.preprocess((arg) => {
+    if (typeof arg === "string") return new Date(arg);
+    return arg;
+  }, z.date()),
 });
+
+export const GetTaskAssigneesParamsSchema = z.object({
+  params: z.object({
+    taskId: z.string().uuid("ID da task deve ser um UUID válido"),
+  }),
+});
+
+export const GetTaskAssigneesResponseSchema = z.array(
+  z.object({
+    user: TaskAssigneeUserSchema,
+    createdAt: z.preprocess((arg) => {
+      if (typeof arg === "string") return new Date(arg);
+      return arg;
+    }, z.date()),
+  }),
+);
 
 export const TaskChecklistItemSchema = z.object({
   id: z.string(),
