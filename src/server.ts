@@ -1,3 +1,4 @@
+import type {} from "./@types/express/index.js";
 import express, { NextFunction, Request, Response } from "express";
 import "dotenv/config";
 import router from "./routes.js";
