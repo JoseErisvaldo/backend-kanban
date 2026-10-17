@@ -129,6 +129,14 @@ export const CreateTaskCommentSchema = z.object({
     .strict(),
 });
 
+export const GetTaskCommentsParamsSchema = z.object({
+  params: z.object({
+    taskId: z.string().uuid("ID da task deve ser um UUID válido"),
+  }),
+});
+
+export const GetTaskCommentsResponseSchema = z.array(TaskCommentSchema);
+
 export const TaskChecklistItemSchema = z.object({
   id: z.string(),
   title: z.string(),

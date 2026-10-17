@@ -101,7 +101,7 @@
 ### 💬 Comentários
 
 - ☑️ `POST /tasks/:taskId/comments` — Adicionar comentário
-- ☐ `GET /tasks/:taskId/comments` — Listar comentários
+- ☑️ `GET /tasks/:taskId/comments` — Listar comentários
 - ☐ `DELETE /tasks/:taskId/comments/:id` — Deletar comentário
 
 ### 👤 Responsáveis
