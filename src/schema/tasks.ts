@@ -118,6 +118,17 @@ export const TaskCommentSchema = z.object({
   user: TaskCommentUserSchema,
 });
 
+export const CreateTaskCommentSchema = z.object({
+  params: z.object({
+    taskId: z.string().uuid("ID da task deve ser um UUID válido"),
+  }),
+  body: z
+    .object({
+      body: z.string().trim().min(1, "Comentário é obrigatório"),
+    })
+    .strict(),
+});
+
 export const TaskChecklistItemSchema = z.object({
   id: z.string(),
   title: z.string(),
