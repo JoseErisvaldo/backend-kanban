@@ -106,6 +106,6 @@
 
 ### 👤 Responsáveis
 
-- ☐ `POST /tasks/:taskId/assignees` — Adicionar responsável
+- ☑️ `POST /tasks/:taskId/assignees` — Adicionar responsável
 - ☐ `GET /tasks/:taskId/assignees` — Listar responsáveis
 - ☐ `DELETE /tasks/:taskId/assignees/:userId` — Remover responsável
