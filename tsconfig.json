@@ -44,10 +44,9 @@
 
     // Interop Constraints
     "forceConsistentCasingInFileNames": true, // Exige capitalização consistente em nomes de arquivo
-    "skipLibCheck": true, // Pula verificação de tipos em bibliotecas
+    "skipLibCheck": true // Pula verificação de tipos em bibliotecas
 
-    // Type Acquisition
-    "types": ["node"] // Pacotes de tipos a incluir (@types/node)
+    // TypeScript inclui automaticamente os tipos disponíveis em node_modules/@types
   },
   "include": ["src/**/*"], // Arquivos a serem incluídos na compilação
   "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"] // Arquivos/pastas excluídos
