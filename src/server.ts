@@ -1,25 +1,7 @@
-import type {} from "./@types/express/index.js";
-import express, { NextFunction, Request, Response } from "express";
-import "dotenv/config";
-import router from "./routes.js";
+import app from "./app.js";
 
-const app = express();
+const port = Number(process.env.PORT) || 3000;
 
-app.use(express.json());
-app.use(router);
-
-app.use((error: Error, _: Request, res: Response, _next: NextFunction) => {
-  if (error instanceof Error) {
-    return res.status(400).json({
-      error: error.message,
-    });
-  }
-
-  return res.status(500).json({
-    error: "Internal server error!",
-  });
-});
-
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });

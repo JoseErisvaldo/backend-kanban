@@ -76,6 +76,10 @@ import { DeleteTaskAssigneeController } from "./controllers/assignees/DeleteTask
 
 const router = Router();
 
+router.get("/", (_, res) => {
+  res.json({ status: "ok", health: "/health" });
+});
+
 router.get("/health", (_, res) => {
   res.send("OK");
 });
