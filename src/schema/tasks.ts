@@ -209,6 +209,18 @@ export const UpdateChecklistItemParamsSchema = z.object({
   body: CreateChecklistItemBodySchema,
 });
 
+export const UpdateChecklistItemCompletionSchema = z.object({
+  params: z.object({
+    taskId: z.string().uuid("ID da task deve ser um UUID válido"),
+    id: z.string().uuid("ID do item da checklist deve ser um UUID válido"),
+  }),
+  body: z
+    .object({
+      isCompleted: z.boolean(),
+    })
+    .strict(),
+});
+
 export const ChecklistItemResponseSchema = z
   .object({
     id: z.string(),
