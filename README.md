@@ -102,7 +102,7 @@
 
 - ☑️ `POST /tasks/:taskId/comments` — Adicionar comentário
 - ☑️ `GET /tasks/:taskId/comments` — Listar comentários
-- ☐ `DELETE /tasks/:taskId/comments/:id` — Deletar comentário
+- ☑️ `DELETE /tasks/:taskId/comments/:id` — Deletar comentário
 
 ### 👤 Responsáveis
 

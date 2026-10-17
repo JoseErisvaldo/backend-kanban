@@ -42,6 +42,7 @@ import {
   CreateTaskCommentSchema,
   CreateTaskSchema,
   DeleteChecklistItemParamsSchema,
+  DeleteTaskCommentParamsSchema,
   GetTaskCommentsParamsSchema,
   UpdateChecklistItemCompletionSchema,
   UpdateChecklistItemParamsSchema,
@@ -65,6 +66,7 @@ import { UpdateChecklistItemCompletionController } from "./controllers/checklist
 import { DeleteChecklistItemController } from "./controllers/checklist/DeleteChecklistItemController.js";
 import { CreateTaskCommentController } from "./controllers/comments/CreateTaskCommentController.js";
 import { GetTaskCommentsController } from "./controllers/comments/GetTaskCommentsController.js";
+import { DeleteTaskCommentController } from "./controllers/comments/DeleteTaskCommentController.js";
 
 const router = Router();
 
@@ -240,5 +242,11 @@ router.get(
   isAuthenticated,
   validateSchema(GetTaskCommentsParamsSchema),
   new GetTaskCommentsController().handle,
+);
+router.delete(
+  "/tasks/:taskId/comments/:id",
+  isAuthenticated,
+  validateSchema(DeleteTaskCommentParamsSchema),
+  new DeleteTaskCommentController().handle,
 );
 export default router;
