@@ -184,6 +184,17 @@ export const GetTaskAssigneesResponseSchema = z.array(
   }),
 );
 
+export const DeleteTaskAssigneeParamsSchema = z.object({
+  params: z.object({
+    taskId: z.string().uuid("ID da task deve ser um UUID válido"),
+    userId: z.string().uuid("ID do usuário deve ser um UUID válido"),
+  }),
+});
+
+export const DeleteTaskAssigneeResponseSchema = z.object({
+  message: z.string(),
+});
+
 export const TaskChecklistItemSchema = z.object({
   id: z.string(),
   title: z.string(),
