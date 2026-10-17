@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { DeleteChecklistItemService } from "../../services/checklist/DeleteChecklistItem";
+import { DeleteChecklistItemService } from "../../services/checklist/DeleteChecklistItem.js";
 
 class DeleteChecklistItemController {
   async handle(req: Request, res: Response) {

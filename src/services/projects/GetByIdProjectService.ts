@@ -1,6 +1,6 @@
 import { ZodError } from "zod";
-import prismaClient from "../../prisma";
-import { GetProjectByIdResponseSchema } from "../../schema/projects";
+import prismaClient from "../../prisma/index.js";
+import { GetProjectByIdResponseSchema } from "../../schema/projects.js";
 
 class GetByIdProjectService {
   async execute(id: string) {

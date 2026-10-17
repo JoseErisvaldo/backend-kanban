@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ReorderTaskStatusesService } from "../../services/taskStatuses/ReorderTaskStatusesService";
+import { ReorderTaskStatusesService } from "../../services/taskStatuses/ReorderTaskStatusesService.js";
 
 class ReorderTaskStatusesController {
   async handle(req: Request, res: Response) {

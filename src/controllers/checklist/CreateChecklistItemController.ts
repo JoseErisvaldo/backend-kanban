@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateChecklistItemService } from "../../services/checklist/CreateChecklistItemService";
+import { CreateChecklistItemService } from "../../services/checklist/CreateChecklistItemService.js";
 
 class CreateChecklistItemController {
   async handle(req: Request, res: Response) {

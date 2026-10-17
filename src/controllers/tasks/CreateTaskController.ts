@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { CreateTaskService } from "../../services/tasks/CreateTaskService";
-import type { TaskType } from "../../schema/tasks";
+import { CreateTaskService } from "../../services/tasks/CreateTaskService.js";
+import type { TaskType } from "../../schema/tasks.js";
 
 class CreateTaskController {
   async handle(req: Request, res: Response) {

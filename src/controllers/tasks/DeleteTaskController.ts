@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { DeleteTaskService } from "../../services/tasks/DeleteTaskService";
+import { DeleteTaskService } from "../../services/tasks/DeleteTaskService.js";
 
 class DeleteTaskController {
   async handle(req: Request, res: Response) {

@@ -1,6 +1,6 @@
 import { ZodError } from "zod";
-import prismaClient from "../../prisma";
-import { GetTaskByIdService } from "./GetTaskByIdService";
+import prismaClient from "../../prisma/index.js";
+import { GetTaskByIdService } from "./GetTaskByIdService.js";
 
 class UpdateTaskStatusService {
   async execute(projectId: string, id: string, statusId: string) {

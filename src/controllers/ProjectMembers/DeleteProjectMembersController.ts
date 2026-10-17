@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { DeleteProjectMembersService } from "../../services/ProjectMembers/DeleteProjectMembersService";
+import { DeleteProjectMembersService } from "../../services/ProjectMembers/DeleteProjectMembersService.js";
 
 class DeleteProjectMembersController {
   async handle(req: Request, res: Response) {

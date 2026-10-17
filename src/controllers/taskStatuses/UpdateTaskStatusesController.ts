@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { UpdateTaskStatusesService } from "../../services/taskStatuses/UpdateTaskStatusesService";
+import { UpdateTaskStatusesService } from "../../services/taskStatuses/UpdateTaskStatusesService.js";
 
 class UpdateTaskStatusesController {
   async handle(req: Request, res: Response) {

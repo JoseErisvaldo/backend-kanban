@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateProjectMembers } from "../../services/ProjectMembers/CreateProjectMembersService";
+import { CreateProjectMembers } from "../../services/ProjectMembers/CreateProjectMembersService.js";
 
 class CreateProjectMembersController {
   async handle(req: Request, res: Response) {

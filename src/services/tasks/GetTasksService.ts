@@ -1,7 +1,7 @@
 import { ZodError } from "zod";
-import prismaClient from "../../prisma";
-import { GetTasksResponseSchema } from "../../schema/tasks";
-import computeSla from "../../utils/computeSla";
+import prismaClient from "../../prisma/index.js";
+import { GetTasksResponseSchema } from "../../schema/tasks.js";
+import computeSla from "../../utils/computeSla.js";
 
 class GetTasksService {
   async execute(projectId: string) {

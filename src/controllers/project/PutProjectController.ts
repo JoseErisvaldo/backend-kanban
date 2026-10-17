@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { PutProjectService } from "../../services/projects/PutProjectService";
+import { PutProjectService } from "../../services/projects/PutProjectService.js";
 class PutProjectController {
   async handle(req: Request, res: Response) {
     const { name, description } = req.body;

@@ -1,5 +1,5 @@
 import { ZodError } from "zod";
-import prismaClient from "../../prisma";
+import prismaClient from "../../prisma/index.js";
 
 interface ICreateProject {
   owner_id: string;

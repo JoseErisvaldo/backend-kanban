@@ -1,6 +1,6 @@
 import { ZodError } from "zod";
-import prismaClient from "../../prisma";
-import { DeleteChecklistItemResponseSchema } from "../../schema/tasks";
+import prismaClient from "../../prisma/index.js";
+import { DeleteChecklistItemResponseSchema } from "../../schema/tasks.js";
 
 class DeleteChecklistItemService {
   async execute(taskId: string, id: string) {

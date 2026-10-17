@@ -1,6 +1,6 @@
 import { ZodError } from "zod";
-import prismaClient from "../../prisma";
-import { UpdateTaskStatusesResponseSchema } from "../../schema/taskStatuses";
+import prismaClient from "../../prisma/index.js";
+import { UpdateTaskStatusesResponseSchema } from "../../schema/taskStatuses.js";
 
 class UpdateTaskStatusesService {
   async execute({

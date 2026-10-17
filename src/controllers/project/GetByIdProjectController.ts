@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { GetByIdProjectService } from "../../services/projects/GetByIdProjectService";
+import { GetByIdProjectService } from "../../services/projects/GetByIdProjectService.js";
 
 class GetByIdProjectController {
   async handle(req: Request, res: Response) {

@@ -1,4 +1,4 @@
-import prismaClient from "../../prisma";
+import prismaClient from "../../prisma/index.js";
 
 class CreateTaskStatusesService {
   async execute({ project_id, name }: { project_id: string; name: string }) {

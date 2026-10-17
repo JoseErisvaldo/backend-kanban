@@ -1,6 +1,6 @@
 import { ZodError } from "zod";
-import prismaClient from "../../prisma";
-import { GetTaskStatusResponseSchema } from "../../schema/taskStatuses";
+import prismaClient from "../../prisma/index.js";
+import { GetTaskStatusResponseSchema } from "../../schema/taskStatuses.js";
 
 interface TaskStatuses {
   projectId: string;

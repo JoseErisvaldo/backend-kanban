@@ -1,7 +1,7 @@
 import { ZodError } from "zod";
-import prismaClient from "../../prisma";
-import { GetTaskByIdService } from "./GetTaskByIdService";
-import { TaskType } from "../../schema/tasks";
+import prismaClient from "../../prisma/index.js";
+import { GetTaskByIdService } from "./GetTaskByIdService.js";
+import { TaskType } from "../../schema/tasks.js";
 
 type UpdateTaskParams = {
   projectId: string;

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { GetTaskByIdService } from "../../services/tasks/GetTaskByIdService";
+import { GetTaskByIdService } from "../../services/tasks/GetTaskByIdService.js";
 
 class GetTaskByIdController {
   async handle(req: Request, res: Response) {

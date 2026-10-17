@@ -1,6 +1,6 @@
 import { ZodError } from "zod";
-import prismaClient from "../../prisma";
-import { TaskCommentSchema } from "../../schema/tasks";
+import prismaClient from "../../prisma/index.js";
+import { TaskCommentSchema } from "../../schema/tasks.js";
 
 class CreateTaskCommentService {
   async execute(taskId: string, userId: string, body: string) {

@@ -1,4 +1,4 @@
-import { GetProjectsService } from "../../services/projects/GetProjectsService";
+import { GetProjectsService } from "../../services/projects/GetProjectsService.js";
 import { Request, Response } from "express";
 
 class GetProjectsController {

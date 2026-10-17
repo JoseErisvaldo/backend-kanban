@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateTaskCommentService } from "../../services/comments/CreateTaskCommentService";
+import { CreateTaskCommentService } from "../../services/comments/CreateTaskCommentService.js";
 
 class CreateTaskCommentController {
   async handle(req: Request, res: Response) {

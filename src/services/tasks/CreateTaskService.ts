@@ -1,6 +1,6 @@
 import { ZodError } from "zod";
-import prismaClient from "../../prisma";
-import { CreateTaskResponseSchema, TaskType } from "../../schema/tasks";
+import prismaClient from "../../prisma/index.js";
+import { CreateTaskResponseSchema, TaskType } from "../../schema/tasks.js";
 export interface CreateTaskParams {
   project_id: string;
   creator_id: string;

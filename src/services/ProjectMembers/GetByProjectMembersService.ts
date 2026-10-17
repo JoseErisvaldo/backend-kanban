@@ -1,5 +1,5 @@
-import prismaClient from "../../prisma";
-import { GetProjectMembersResponseSchema } from "../../schema/projectMembers";
+import prismaClient from "../../prisma/index.js";
+import { GetProjectMembersResponseSchema } from "../../schema/projectMembers.js";
 
 interface IGetByProjectMembers {
   projectId: string;

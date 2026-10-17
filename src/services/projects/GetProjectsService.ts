@@ -1,5 +1,5 @@
-import prismaClient from "../../prisma";
-import { GetProjectsResponseSchema } from "../../schema/projects";
+import prismaClient from "../../prisma/index.js";
+import { GetProjectsResponseSchema } from "../../schema/projects.js";
 import { ZodError } from "zod";
 
 class GetProjectsService {

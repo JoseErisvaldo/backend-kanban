@@ -1,6 +1,6 @@
 import { ZodError } from "zod";
-import prismaClient from "../../prisma";
-import { DeleteMemberInProjectResponseSchema } from "../../schema/projectMembers";
+import prismaClient from "../../prisma/index.js";
+import { DeleteMemberInProjectResponseSchema } from "../../schema/projectMembers.js";
 
 class DeleteProjectMembersService {
   async execute(id: string) {

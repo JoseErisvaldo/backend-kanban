@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { UpdateChecklistItemService } from "../../services/checklist/UpdateChecklistItem";
+import { UpdateChecklistItemService } from "../../services/checklist/UpdateChecklistItem.js";
 
 class UpdateChecklistItemController {
   async handle(req: Request, res: Response) {

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateTaskStatusesService } from "../../services/taskStatuses/CreateTaskStatusesService";
+import { CreateTaskStatusesService } from "../../services/taskStatuses/CreateTaskStatusesService.js";
 
 class CreateTaskStatusesController {
   async handle(req: Request, res: Response) {

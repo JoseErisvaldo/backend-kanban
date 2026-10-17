@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { DeleteTaskAssigneeService } from "../../services/assignees/DeleteTaskAssigneeService";
+import { DeleteTaskAssigneeService } from "../../services/assignees/DeleteTaskAssigneeService.js";
 
 class DeleteTaskAssigneeController {
   async handle(req: Request, res: Response) {

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import prismaClient from "../prisma";
+import prismaClient from "../prisma/index.js";
 
 export const isAdminOrModerator = async (
   req: Request,

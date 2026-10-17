@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { GetTaskStatusesService } from "../../services/taskStatuses/GetTaskStatusesService";
+import { GetTaskStatusesService } from "../../services/taskStatuses/GetTaskStatusesService.js";
 
 class GetTaskStatusesController {
   public async handle(req: Request, res: Response): Promise<Response> {

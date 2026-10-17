@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { DeleteTaskCommentService } from "../../services/comments/DeleteTaskCommentService";
+import { DeleteTaskCommentService } from "../../services/comments/DeleteTaskCommentService.js";
 
 class DeleteTaskCommentController {
   async handle(req: Request, res: Response) {
