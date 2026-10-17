@@ -94,7 +94,7 @@
 ### ☑️ Checklist
 
 - ☑️ `POST /tasks/:taskId/checklist` — Criar item da checklist
-- ☐ `PUT /tasks/:taskId/checklist/:id` — Atualizar item da checklist
+- ☑️ `PUT /tasks/:taskId/checklist/:id` — Atualizar item da checklist
 - ☐ `DELETE /tasks/:taskId/checklist/:id` — Remover item da checklist
 - ☐ `PATCH /tasks/:taskId/checklist/:id/complete` — Concluir/desmarcar item
 
